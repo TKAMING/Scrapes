@@ -33,7 +33,8 @@ options_menu = """
         [+] Options:
             [help] ------------------- Help Menu
             [version] ---------------- Version Number
-            [update] ----------------- Update scrape
+            [update] ----------------- Update Scrape
+            [clear] ------------------ Clears the screen
             [quit] ------------------- Quit
 
         [*] Select an [option]...
@@ -62,6 +63,10 @@ def cli():
         if option == "help":
             print(banner)
             print(options_menu)
+
+        elif option == "clear":
+            print(banner)
+            clear()
 
         #elif option == "version":
 
