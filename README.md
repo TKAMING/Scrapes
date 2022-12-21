@@ -21,3 +21,8 @@ Python
 - [ ] Scraping
   - [ ] Twitter
   - [ ] Wiki
+
+---
+  
+  <!-- copyright -->
+© 2022 by Tobias Karuth
