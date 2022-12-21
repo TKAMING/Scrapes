@@ -14,5 +14,4 @@ pip3 install -e .
 
 # clean up
 echo [+] Installation Completed
-echo "- please restart your terminal"
 echo "- please type 'scrapes [ARGUMENT]' to launch Scrapes"
