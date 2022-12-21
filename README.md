@@ -10,7 +10,7 @@ A command line tool that can scrape the web, twitter and more
 
 ---
 
-## Technologies used:
+## Technologies used
 Python
 
 ---
