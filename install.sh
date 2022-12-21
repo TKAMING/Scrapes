@@ -7,10 +7,8 @@ echo [*] Installing tools...
 sudo apt update
 sudo apt-get install python3
 sudo apt-get install python3-pip
+sudo pip3 install -e .
 echo [+] Completed
-
-#installing
-pip3 install -e .
 
 # clean up
 echo [+] Installation Completed
