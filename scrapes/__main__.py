@@ -102,7 +102,7 @@ def remove():
     print("\n[~] Are you sure you want to remove Scrapes [y/n]\n")
 
     # user input
-    option = input(header)
+    option = input()
 
     # delete Scrapes
     if option == "y":
