@@ -86,7 +86,7 @@ def update():
         print("[~] Update Scrapes? [y/n]\n")
 
         # user input, option
-        option = input(f"{header}")
+        option = input()
         
         # update
         if option == "y":
