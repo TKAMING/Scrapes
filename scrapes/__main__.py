@@ -4,6 +4,8 @@
 # imports
 import os
 import sys
+import getpass
+import readline
 from .twittermodule import twitterScrape
 
 # banner for display
@@ -54,8 +56,10 @@ options_menu = """
         [*] Select an [option]...
 """
 
-header = f"[~] scrapes $ " # sets up user input interface
-
+username = getpass.getuser() # gets username
+header = f"[~] {username}@scrapes $ " # sets up user input interface
+remote_path = "raw.githubusercontent.com/TKAMING/Scrapes/main" # url path for Scrapes files
+local_path = f"/home/{username}/.Scrapes" if username != "root" else "/root/.Scrapes" # gets path of Scrapes
 
 # clear screen
 def clear():
@@ -116,8 +120,8 @@ def cli():
             print(banner)
             clear()
 
-        #elif option == "version":
-
+        elif option == "version":
+            os.system(f"cat {local_path}/version.txt")
 
         elif option == "update":
             update()
