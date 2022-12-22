@@ -57,7 +57,7 @@ to run scrapes
 ---
 
 ## Technologies used
-Python
+Python(Selenium)
 
 ---
 
