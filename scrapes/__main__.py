@@ -92,11 +92,11 @@ def update():
         if option == "y" or option == "yes":
             os.system(f"bash ~/.Scrapes/update.sh")
 
-        else:
-            print("\n[+] Scrapes already up to date")
-            print("[*] Hit any key to continue...\n")
-            input(header)
-
+    else:
+        print("\n[+] Scrapes already up to date")
+        print("[*] Hit any key to continue...\n")
+        input(header)
+        
 def remove():
     # confirmation
     print("\n[~] Are you sure you want to remove Scrapes [y/n]\n")
@@ -107,7 +107,7 @@ def remove():
     # delete Scrapes
     if option == "y" or option == "yes":
         os.system("sudo rm -rf ~/.Scrapes")
-        print("[*] Scrapes successfully uninstalled and exeting...")
+        print("[*] Scrapes successfully uninstalled and exeting. Bye...")
         sys.exit()
 
     # cancel
