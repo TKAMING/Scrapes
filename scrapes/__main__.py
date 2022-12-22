@@ -24,8 +24,6 @@ banner = """
                         SP                 SP   SP                          
                         Y                  Y    Y                           
                                                                     
-
-
                     [::] "Scrapes" the hole Internet... [::]
                       [::] Created By : Tobias Karuth [::]
 """
