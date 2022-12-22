@@ -86,7 +86,7 @@ def update():
         print("[~] Update Scrapes? [y/n]\n")
 
         # user input, option
-        option = input().lowercase()
+        option = input().lower()
         
         # update
         if option == "y" or option == "yes":
@@ -102,7 +102,7 @@ def remove():
     print("\n[~] Are you sure you want to remove Scrapes [y/n]\n")
 
     # user input
-    option = input().lowercase()
+    option = input().lower()
 
     # delete Scrapes
     if option == "y" or option == "yes":
@@ -123,7 +123,7 @@ def cli():
     while True:
 
         # user input, option
-        option = input(header).lowercase()
+        option = input(header).lower()
 
         # command options
         if option == "help":
