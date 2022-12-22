@@ -86,10 +86,10 @@ def update():
         print("[~] Update Scrapes? [y/n]\n")
 
         # user input, option
-        option = input()
+        option = input().lowercase()
         
         # update
-        if option == "y":
+        if option == "y" or option == "yes":
             os.system(f"bash ~/.Scrapes/update.sh")
 
         else:
@@ -102,14 +102,14 @@ def remove():
     print("\n[~] Are you sure you want to remove Scrapes [y/n]\n")
 
     # user input
-    option = input()
+    option = input().lowercase()
 
     # delete Scrapes
-    if option == "y":
+    if option == "y" or option == "yes":
         os.system("sudo rm -rf ~/.Scrapes")
 
     # cancel
-    if option == "n":
+    if option == "n" or option == "no":
         main()
 
 
@@ -123,7 +123,7 @@ def cli():
     while True:
 
         # user input, option
-        option = input(header)
+        option = input(header).lowercase()
 
         # command options
         if option == "help":
