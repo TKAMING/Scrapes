@@ -9,8 +9,8 @@ sudo git clone https://github.com/TKAMING/Scrapes
 
 # install dependencies
 cd Scrapes
-sudo chmod +x install.sh
-./install.sh
+# sudo chmod +x install.sh
+bash install.sh
 
 # self delete
 sudo rm -rf ../update.sh
