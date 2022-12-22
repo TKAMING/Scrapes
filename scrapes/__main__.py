@@ -108,6 +108,7 @@ def cli():
 
         # command options
         if option == "help":
+            clear()
             print(banner)
             print(options_menu)
 
