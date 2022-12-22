@@ -61,6 +61,39 @@ header = f"[~] scrapes $ " # sets up user input interface
 def clear():
     os.system("clear")
 
+# update Scrapes
+def update():
+    print("\n[*] Checking for updates...")
+
+    # get latest version nubmer
+    os.system(f"curl https://raw.githubusercontent.com/TKAMING/Scrapes/main/version.txt | tee ~/.Scrapes/latest.txt")
+
+    # save version nubmers to memory
+    current_version = float(open(f"{local_path}/version.txt", "r").read())
+    latest_version = float(open(f"{local_path}/latest.txt", "r").read())
+
+    # remove version number file
+    os.system("rm -rf ~/.Scrapes/latest.txt")
+
+    # if new version is available, update
+    if latest_version > current_version:
+        print("\n[+] Update found")
+        print("[~] Update Scrapes? [y/n]\n")
+
+        # user input, option
+        option = input(f"{header}")
+        
+        # update
+        if option == "y":
+            os.system(f"bash ~/.Scrapes/update.sh")
+
+        else:
+            print("\n[+] Scrapes already up to date")
+            print("[*] Hit any key to continue...\n")
+            input(header)
+
+
+
 # command line interface
 def cli():
     # display banner
@@ -84,7 +117,10 @@ def cli():
 
         #elif option == "version":
 
-        #elif option == "update":
+
+        elif option == "update":
+            update()
+            exit()
 
         elif option == "quit" or option == "exit":
             print("\n[*] Exiting...")

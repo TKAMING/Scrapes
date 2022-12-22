@@ -1,6 +1,14 @@
 #!/bin/bash
 # installer for Scrapes
 # created by : Tobias Karuth (TKAMING)
+# staging
+echo [*] Staging process...
+mkdir ~/.Scrapes
+cd ..
+mv Scrapes/* ~/.Scrapes
+rm -rf Scrapes
+cd ~/.Scrapes
+echo [+] Completed
 
 #  get tools
 echo [*] Installing tools...
