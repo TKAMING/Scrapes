@@ -107,6 +107,8 @@ def remove():
     # delete Scrapes
     if option == "y" or option == "yes":
         os.system("sudo rm -rf ~/.Scrapes")
+        print("[*] Scrapes successfully uninstalled and exeting...")
+        sys.exit()
 
     # cancel
     if option == "n" or option == "no":
