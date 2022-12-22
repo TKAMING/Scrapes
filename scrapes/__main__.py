@@ -97,6 +97,20 @@ def update():
             print("[*] Hit any key to continue...\n")
             input(header)
 
+def remove():
+    # confirmation
+    print("\n[~] Are you sure you want to remove Scrapes [y/n]\n")
+
+    # user input
+    option = input(header)
+
+    # delete Scrapes
+    if option == "y":
+        os.system("rm -rf ~/.Scrapes")
+
+    # cancel
+    if option == "n":
+        main()
 
 
 # command line interface
@@ -132,9 +146,20 @@ def cli():
             print("\n[*] Exiting...")
             sys.exit()
 
+        # remove installation
+        elif option == "remove" or option == "uninstall":
+            remove()
+
         elif option == "twitter":
             search = input("[*] For what keyword to scrape twitter through?\n")
             twitterScrape(search)
+
+        # exception
+        else:
+            os.system(option)
+        
+        # new line for cleaner UI
+        print("\n")
 
 # main code
 def main():
