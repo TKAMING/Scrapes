@@ -50,6 +50,7 @@ options_menu = """
             [help] ------------------- Help Menu
             [version] ---------------- Version Number
             [update] ----------------- Update Scrape
+            [uninstall] -------------- Unistalls Scrape
             [clear] ------------------ Clears the screen
             [quit] ------------------- Quit
 
