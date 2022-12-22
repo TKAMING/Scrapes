@@ -20,10 +20,6 @@ cd Scrapes
 bash install.sh
 ```
 
-Now please restart you computer. For example:
-```
-reboot
-```
 And finished you installed Scrape and can use it now everywhere in your Terminal! You can try:
 ```
 scrapes --help
