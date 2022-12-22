@@ -178,7 +178,7 @@ def main():
             cli()
 
         elif args == "--version" or args == "-v":
-           print(banner) 
+           os.system(f"cat {local_path}/version.txt")
 
         elif args == "--help" or args == "-h":
             print(help_menu)
