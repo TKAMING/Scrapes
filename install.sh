@@ -5,8 +5,8 @@
 echo [*] Staging process...
 mkdir ~/.Scrapes
 cd ..
-mv Scrapes/* ~/.Scrapes
-rm -rf Scrapes
+sudo mv Scrapes/* ~/.Scrapes
+sudo rm -rf Scrapes
 cd ~/.Scrapes
 echo [+] Completed
 

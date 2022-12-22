@@ -71,14 +71,14 @@ def update():
     print("\n[*] Checking for updates...")
 
     # get latest version nubmer
-    os.system(f"curl https://raw.githubusercontent.com/TKAMING/Scrapes/main/version.txt | tee ~/.Scrapes/latest.txt")
+    os.system(f"sudo curl https://raw.githubusercontent.com/TKAMING/Scrapes/main/version.txt | tee ~/.Scrapes/latest.txt")
 
     # save version nubmers to memory
     current_version = float(open(f"{local_path}/version.txt", "r").read())
     latest_version = float(open(f"{local_path}/latest.txt", "r").read())
 
     # remove version number file
-    os.system("rm -rf ~/.Scrapes/latest.txt")
+    os.system("sudo rm -rf ~/.Scrapes/latest.txt")
 
     # if new version is available, update
     if latest_version > current_version:
@@ -106,7 +106,7 @@ def remove():
 
     # delete Scrapes
     if option == "y":
-        os.system("rm -rf ~/.Scrapes")
+        os.system("sudo rm -rf ~/.Scrapes")
 
     # cancel
     if option == "n":
@@ -136,7 +136,7 @@ def cli():
             clear()
 
         elif option == "version":
-            os.system(f"cat {local_path}/version.txt")
+            os.system(f"sudo cat {local_path}/version.txt")
 
         elif option == "update":
             update()
