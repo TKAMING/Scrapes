@@ -1,7 +1,7 @@
 from setuptools import setup
 setup(
     name = 'Scrapes',
-    version = '1.3',
+    version = '0.4.1',
     packages = ['scrapes'],
     license = "MIT License",
     entry_points = {
