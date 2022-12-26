@@ -1,14 +1,10 @@
 # by Tobias Karuth (TKAMING)
-#def twitterScrape(search):
-#    print(f"[*] Serching for {search}...")
 
 import csv
 from time import sleep
 from msedge.selenium_tools import Edge, EdgeOptions
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions
 from selenium.common import exceptions
 
 
@@ -19,34 +15,16 @@ def create_webdriver_instance():
     return driver
 
 
-def login_to_twitter(username, password, driver):
-    url = 'https://twitter.com/login'
-    try:
-        driver.get(url)
-        xpath_username = '//input[@name="session[username_or_email]"]'
-        WebDriverWait(driver, 10).until(expected_conditions.presence_of_element_located((By.XPATH, xpath_username)))
-        uid_input = driver.find_element_by_xpath(xpath_username)
-        uid_input.send_keys(username)
-    except exceptions.TimeoutException:
-        print("Timeout while waiting for Login screen")
-        return False
+def twitter_search(driver, search_term):
+    url = 'https://twitter.com/search'
+    driver.get(url)
+    driver.maximize_window()
+    sleep(5)
 
-    pwd_input = driver.find_element_by_xpath('//input[@name="session[password]"]')
-    pwd_input.send_keys(password)
-    try:
-        pwd_input.send_keys(Keys.RETURN)
-        url = "https://twitter.com/home"
-        WebDriverWait(driver, 10).until(expected_conditions.url_to_be(url))
-    except exceptions.TimeoutException:
-        print("Timeout while waiting for home screen")
-    return True
-
-
-def find_search_input_and_enter_criteria(search_term, driver):
-    xpath_search = '//input[@aria-label="Search query"]'
-    search_input = driver.find_element_by_xpath(xpath_search)
+    search_input = driver.find_element_by_xpath('//input[@aria-label="Search query"]')
     search_input.send_keys(search_term)
     search_input.send_keys(Keys.RETURN)
+    sleep(5)
     return True
 
 
@@ -55,6 +33,7 @@ def change_page_sort(tab_name, driver):
     tab = driver.find_element_by_link_text(tab_name)
     tab.click()
     xpath_tab_state = f'//a[contains(text(),\"{tab_name}\") and @aria-selected=\"true\"]'
+    return xpath_tab_state
 
 
 def generate_tweet_id(tweet):
@@ -95,7 +74,7 @@ def collect_all_tweets_from_current_view(driver, lookback_limit=25):
      `lookback_limit` to only process the last `x` number of tweets extracted from the page in each iteration.
      You may need to play around with this number to get something that works for you. I've set the default
      based on my computer settings and internet speed, etc..."""
-    page_cards = driver.find_elements_by_xpath('//div[@data-testid="tweet"]')
+    page_cards = driver.find_elements_by_xpath('//article[@data-testid="tweet"]')
     if len(page_cards) <= lookback_limit:
         return page_cards
     else:
@@ -149,19 +128,15 @@ def extract_data_from_current_tweet_card(card):
     return tweet
 
 
-def main(username, password, search_term, filepath, page_sort='Latest'):
+def main(search_term, filepath, page_sort='Latest'):
     save_tweet_data_to_csv(None, filepath, 'w')  # create file for saving records
     last_position = None
     end_of_scroll_region = False
     unique_tweets = set()
 
     driver = create_webdriver_instance()
-    logged_in = login_to_twitter(username, password, driver)
-    if not logged_in:
-        return
-
-    search_found = find_search_input_and_enter_criteria(search_term, driver)
-    if not search_found:
+    twitter_search_page_term = twitter_search(driver, search_term)
+    if not twitter_search_page_term:
         return
 
     change_page_sort(page_sort, driver)
@@ -184,9 +159,7 @@ def main(username, password, search_term, filepath, page_sort='Latest'):
 
 
 if __name__ == '__main__':
-    usr = "email@gmail.com"
-    pwd = "password"
     path = 'pysimplegui.csv'
     term = 'pysimplegui'
-
-    main(usr, pwd, term, path)
+    
+    main(term, path)
