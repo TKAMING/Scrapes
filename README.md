@@ -53,6 +53,12 @@ scrapes run
 ```
 to run scrapes
 
+---
+
+## Requirements
+Microsoft Edge: https://www.microsoft.com/edge/home?form=MA13FJ
+For the Twitter scraper because we´re using the Selenium Edge driver, you can change that in the scraper code.
+
 
 ---
 
