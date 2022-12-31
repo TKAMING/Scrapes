@@ -2,16 +2,14 @@
 
 import csv
 from time import sleep
-from msedge.selenium_tools import Edge, EdgeOptions
+from selenium.webdriver import Chrome
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.common import exceptions
 
 
 def create_webdriver_instance():
-    options = EdgeOptions()
-    options.use_chromium = True
-    driver = Edge(options=options)
+    driver = Chrome()
     return driver
 
 
