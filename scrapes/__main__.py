@@ -60,7 +60,7 @@ options_menu = """
             [quit] ------------------- Quit
 
         [+] Names:
-            [chromedriver] ----------- Install if you dont have the Chrome driver
+            [chrome-driver] ----------- Install if you dont have the Chrome driver
                                        (must have for the twitter scraper)
 
         [*] Select an [option]...
