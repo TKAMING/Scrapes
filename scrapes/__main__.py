@@ -6,7 +6,7 @@ import os
 import sys
 import getpass
 import readline
-from .twittermodule import twitterScrape
+#from .twittermodule import twitterScrape
 
 # banner for display
 banner = """
