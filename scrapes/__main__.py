@@ -34,8 +34,12 @@ banner = """
 help_menu = """
         [+] Arguments:
             run ----------------------- Run Scrapes
+            install + [NAME] ---------- Install something
             -v, --version ------------- Scrapes Version
             -h, --help  --------------- Help Menu
+
+        [+] Names:
+            chrome-driver ------------- to install the Chrome driver    
 
         [+] Example:
             scrapes [ARGUMENT]
@@ -51,8 +55,13 @@ options_menu = """
             [version] ---------------- Version Number
             [update] ----------------- Update Scrape
             [uninstall] -------------- Unistalls Scrape
+            [install] + [NAME] ------- Install something
             [clear] ------------------ Clears the screen
             [quit] ------------------- Quit
+
+        [+] Names:
+            [chromedriver] ----------- Install if you dont have the Chrome driver
+                                       (must have for the twitter scraper)
 
         [*] Select an [option]...
 """
@@ -156,6 +165,18 @@ def cli():
             search = input("[*] For what keyword to scrape twitter through?\n")
             twitterScrape(search)
 
+        elif option == "install chrome-driver":
+            # confirmation
+            print("\n[~] Are you sure you want to install the Chrome driver [y/n]\n")
+            # user input
+            option = input().lower()
+
+            if option == "y" or option == "yes":
+                os.system("bash chrome_driver_install.sh")
+
+            else:
+                main()
+
         # exception
         else:
             os.system(option)
@@ -184,6 +205,17 @@ def main():
 
         elif args == "--help" or args == "-h":
             print(help_menu)
+
+        elif args == "install chrome-driver":
+            # confirmation
+            print("\n[~] Are you sure you want to install the Chrome driver [y/n]\n")
+            # user input
+            option = input().lower()
+
+            if option == "y" or option == "yes":
+                os.system("bash chrome_driver_install.sh")
+            else:
+                print("[*] Cancel...")
 
         else:
             print("[*] Error")

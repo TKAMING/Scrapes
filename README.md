@@ -58,7 +58,11 @@ to run scrapes
 ## Requirements
 Google Chrome (Update before if possible)
 
-For the Twitter scraper because we´re using the Selenium Edge driver, you can change that in the scraper code.
+if you dont have the Chrome driver already installed run
+
+    scrapes install chrome-driver
+
+Or the Twitter scraper won´t run because we´re using the Selenium Chrome driver, you can change that in the scraper code.
 
 
 ---
