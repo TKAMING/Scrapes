@@ -6,7 +6,7 @@ import os
 import sys
 import getpass
 import readline
-#from .twittermodule import twitterScrape
+from .twittermodule import *
 
 # banner for display
 banner = """
@@ -162,8 +162,10 @@ def cli():
             remove()
 
         elif option == "twitter":
+            username = input("[*] Your Twitter account username (Valid)?\n")
+            password = input("[*] Your Twitter account password (Valid)?\n")
             search = input("[*] For what keyword to scrape twitter through?\n")
-            twitterScrape(search)
+            twitterScrape_main(username, password, search)
 
         elif option == "install chrome-driver":
             # confirmation
