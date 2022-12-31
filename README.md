@@ -56,7 +56,7 @@ to run scrapes
 ---
 
 ## Requirements
-Google Chrome
+Google Chrome (Update before if possible)
 
 For the Twitter scraper because we´re using the Selenium Edge driver, you can change that in the scraper code.
 
