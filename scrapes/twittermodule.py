@@ -21,9 +21,9 @@ def login_to_twitter(username, password, driver):
     url = 'https://twitter.com/login'
     try:
         driver.get(url)
-        xpath_username = '//input[@name="session[username_or_email]"]'
-        WebDriverWait(driver, 10).until(expected_conditions.presence_of_element_located((By.XPATH, xpath_username)))
-        uid_input = driver.find_element_by_xpath(xpath_username)
+        #xpath_username = '//input'#[@name="session[username_or_email]"]'
+        WebDriverWait(driver, 10).until(expected_conditions.presence_of_element_located((By.XPATH, "//input")))
+        uid_input = driver.find_element("name", "//input")
         uid_input.send_keys(username)
     except exceptions.TimeoutException:
         print("Timeout while waiting for Login screen")
@@ -166,9 +166,9 @@ def twitterScrape_main(username, password, search_term, filepath, page_sort='Lat
 
 
 if __name__ == '__main__':
-    usr = "email@gmail.com"
-    pwd = "password"
+    username = "tobi.karuth@icloud.com"
+    password = "123456789hallo!"
     path = 'twitterscraped_data.csv'
     term = 'twitterscraped_data'
 
-    twitterScrape_main(usr, pwd, term, path)
+    twitterScrape_main(username, password, term, path)
