@@ -16,8 +16,14 @@ sudo apt update
 sudo apt-get install python3
 sudo apt-get install python3-pip
 sudo pip3 install -e .
-sudo pip3 install selenium
-sudo wget https://github.com/mozilla/geckodriver/releases/download/v0.32.0/geckodriver-v0.32.0-linux64.tar.gz
+sudo pip3 install Scweet==1.8
+sudo pip3 install certifi
+sudo pip3 install selenium==4.2.0
+sudo pip3 install pandas
+sudo pip3 install python-dotenv
+sudo pip3 install chromedriver-autoinstaller
+sudo pip3 install geckodriver-autoinstaller
+sudo pip3 install urllib3
 cd ..
 echo [+] Completed
 
@@ -25,3 +31,4 @@ echo [+] Completed
 echo [+] Installation Completed
 echo "1. restart your Computer"
 echo "2. you can type 'scrapes [ARGUMENT]' to launch Scrapes"
+echo "REQUIREMENTS: You need to install Chrome to use the Twitter scrape function!!!"

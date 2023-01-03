@@ -59,10 +59,6 @@ options_menu = """
             [clear] ------------------ Clears the screen
             [quit] ------------------- Quit
 
-        [+] Names:
-            [chrome-driver] ----------- Install if you dont have the Chrome driver
-                                       (must have for the twitter scraper)
-
         [*] Select an [option]...
 """
 
@@ -162,22 +158,7 @@ def cli():
             remove()
 
         elif option == "twitter":
-            username = input("[*] Your Twitter account username (Valid)?\n")
-            password = input("[*] Your Twitter account password (Valid)?\n")
-            search = input("[*] For what keyword to scrape twitter through?\n")
-            twitterScrape_main(username, password, search)
-
-        elif option == "install chrome-driver":
-            # confirmation
-            print("\n[~] Are you sure you want to install the Chrome driver [y/n]\n")
-            # user input
-            option = input().lower()
-
-            if option == "y" or option == "yes":
-                os.system("bash chrome_driver_install.sh")
-
-            else:
-                main()
+            twitterScrape()
 
         # exception
         else:

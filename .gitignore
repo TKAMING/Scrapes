@@ -129,4 +129,4 @@ dmypy.json
 .pyre/
 
 chromedriver_mac64
-twitterscraped_data.csv
+outputs
