@@ -54,7 +54,7 @@ def twitterScrape():
         print("[*] Incorrect answer! So Top sort has been choosen automaticly\n")
 
 
-    lang = input(""""
+    lang = input("""
             [~] Which language you want to use?
 
             [*] Example:
@@ -82,7 +82,7 @@ def twitterScrape():
 
 
     #scraping process
-    data = scrape(words=[search], since=since, until=until, from_account=None, interval=interval,
+    data = scrape(words=search, since=since, until=until, from_account=None, interval=interval,
                   headless=False, display_type=display_type, save_images=False, lang=lang,
                   resume=False, filter_replies=False, proximity=False, geocode=geocode)
 
