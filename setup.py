@@ -1,7 +1,7 @@
 from setuptools import setup
 import os
 
-version = os.system(f"sudo curl https://raw.githubusercontent.com/TKAMING/Scrapes/main/version.txt")
+version = os.system("sudo curl https://raw.githubusercontent.com/TKAMING/Scrapes/main/version.txt")
 
 setup(
     name = 'Scrapes',
