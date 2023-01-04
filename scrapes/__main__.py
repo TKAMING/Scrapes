@@ -6,7 +6,7 @@ import os
 import sys
 import getpass
 import readline
-from .twittermodule import *
+from .twittermodule import twitterScrape
 
 # banner for display
 banner = """
@@ -189,16 +189,16 @@ def main():
         elif args == "--help" or args == "-h":
             print(help_menu)
 
-        elif args == "install chrome-driver":
-            # confirmation
-            print("\n[~] Are you sure you want to install the Chrome driver [y/n]\n")
-            # user input
-            option = input().lower()
+        #elif args == "install chrome-driver":
+        #    # confirmation
+        #    print("\n[~] Are you sure you want to install the Chrome driver [y/n]\n")
+        #    # user input
+        #    option = input().lower()
 
-            if option == "y" or option == "yes":
-                os.system("bash chrome_driver_install.sh")
-            else:
-                print("[*] Cancel...")
+        #    if option == "y" or option == "yes":
+        #        os.system("bash chrome_driver_install.sh")
+        #    else:
+        #        print("[*] Cancel...")
 
         else:
             print("[*] Error")
