@@ -15,15 +15,15 @@ echo [*] Installing tools...
 sudo apt update
 sudo apt-get install python3
 sudo apt-get install python3-pip
-sudo pip3 install -e .
-sudo pip3 install Scweet==1.8
-sudo pip3 install certifi
-sudo pip3 install selenium==4.2.0
-sudo pip3 install pandas
-sudo pip3 install python-dotenv
-sudo pip3 install chromedriver-autoinstaller
-sudo pip3 install geckodriver-autoinstaller
-sudo pip3 install urllib3
+pip3 install -e .
+pip3 install Scweet==1.8
+pip3 install certifi
+pip3 install selenium==4.2.0
+pip3 install pandas
+pip3 install python-dotenv
+pip3 install chromedriver-autoinstaller
+pip3 install geckodriver-autoinstaller
+pip3 install urllib3
 cd ..
 echo [+] Completed
 
