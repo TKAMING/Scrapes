@@ -74,12 +74,12 @@ def twitterScrape():
 [+] Options:
     1) Top --------- to display the most trending Tweets
     2) Latest ------ to display the latest posted Tweets
-    \n{header}""")
+    \n{header}""").lower()
 
-    if option == "1":
+    if option == "1" or option == "top":
         display_type = "Top"
 
-    elif option == "2":
+    elif option == "2" or option == "latest":
         display_type = "Latest"
 
     else:
@@ -138,5 +138,3 @@ def twitterScrape():
 
     following = get_users_following(users=users, env=env_path, verbose=0, headless=True, wait=2, limit=50, file_path=None)
     followers = get_users_followers(users=users, env=env_path, verbose=0, headless=True, wait=1, limit=50, file_path=None)
-
-twitterScrape()
