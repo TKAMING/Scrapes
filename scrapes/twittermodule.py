@@ -1,17 +1,45 @@
 # by Tobias Karuth (TKAMING)
 
+import os
+import sys
+import getpass
+import time
 from Scweet.scweet import scrape
 from Scweet.user import get_user_information, get_users_following, get_users_followers
 
 def twitterScrape():
+    username = getpass.getuser() # gets username
+    header = f"[~] {username}@scrapes $ " # sets up user input interface
     name = "Twitter"
+    print("[+] Starting Twitter scraping process...\n")
 
-    username = input(f"[*] Whats your {name} account username (Valid)?\n")
-    password = input(f"[*] Whats your {name} account password (Valid)?\n")
-    email = input(f"[*] Whats your {name} account E-mail (Valid)?\n")
+    time.sleep(1)
 
+    os.system("clear")
 
-    n = int(input("[*] How many kewords do you have?\n"))
+    username = input(f"[*] Whats your {name} account username (Valid)?\n $ ")
+
+    # password validation
+    
+    while True:
+        password = getpass.getpass(prompt = f"\n[*] Whats your {name} account password (Valid)?\n $ ")
+        password_check = getpass.getpass(prompt = f"\n[*] Enter your password again\n $ ")
+
+        if password == password_check:
+            print("\n[+] Correct...\n")
+            break
+
+        else:
+            print("The passwords are not the same. Try again...\n")
+            time.sleep(2)
+            os.system("clear")
+            continue
+
+    email = input(f"\n[*] Whats your {name} account E-mail (Valid)?\n $ ")
+
+    os.system("clear")
+
+    n = int(input(f"[*] How many kewords do you have?\n $ "))
     search = []
     print(f"What keyword {name} to scrape through?")
 
@@ -21,6 +49,8 @@ def twitterScrape():
 
     print(f"Scrape in {name} for: {search}\n")
 
+    time.sleep(2)
+    os.system("clear")
 
     option = input("[~] Do you want to have a Interval [y/n]\n").lower()
 
@@ -29,20 +59,22 @@ def twitterScrape():
         since = input("Since: ")
         until = input("Until: ")
         interval = 1
-# TODO Error not NONE must arg 1 must be str
+    # TODO Error not NONE must arg 1 must be str
     else:
         since = None
         until = None
         interval = None
 
+    time.sleep(1)
+    os.system("clear")
     
-    option = input("""
-            [~] In which order to sort by the Tweets?
+    option = input(f"""
+[~] In which order to sort by the Tweets?
 
-            [+] Options:
-                1) Top --------- to display the most trending Tweets
-                2) Latest ------ to display the latest posted Tweets
-    \n""")
+[+] Options:
+    1) Top --------- to display the most trending Tweets
+    2) Latest ------ to display the latest posted Tweets
+    \n{header}""")
 
     if option == "1":
         display_type = "Top"
@@ -51,28 +83,33 @@ def twitterScrape():
         display_type = "Latest"
 
     else:
-        print("[*] Incorrect answer! So Top sort has been choosen automaticly\n")
+        print("[*] Incorrect answer! So Top sort has been choosen automaticly")
+        display_type = "Top"
 
+    time.sleep(1)
+    os.system("clear")
 
-    lang = input("""
-            [~] Which language you want to use?
+    lang = input(f"""
+[~] Which language you want to use?
 
-            [*] Example:
-                en ---------- for English
-                de ---------- for German
-                and so forth
-    \n""").lower()
+[*] Example:
+    en ---------- for English
+    de ---------- for German
+    and so forth
+    \n{header}""").lower()
 
+    time.sleep(1)
+    os.system("clear")
 
-    option = input("""
-            [~] Do you want to use a geocode to scrape Tweets geolocated
-                less than 200 km (depending on your input) 
-                from your entered geolocation?
-
-            [*] Example:
-                no --------------------------------- use no geolocation
-                example: 38.3452,-0.481006,200km --- for less than 200km from Alicante (Spain) Lat=38.3452, Long=-0.481006
-    \n""").lower()
+    option = input(f"""
+[~] Do you want to use a geocode to scrape Tweets geolocated
+    less than 200 km (depending on your input) 
+    from your entered geolocation?
+    
+[*] Example:
+    no --------------------------------- use no geolocation
+    example: 38.3452,-0.481006,200km --- for less than 200km from Alicante (Spain) Lat=38.3452, Long=-0.481006
+    \n{header}""").lower()
 
     if option == "n" or option =="no":
         geocode = None
