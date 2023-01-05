@@ -138,7 +138,7 @@ def readScrapedData():
     file = input(" $ ")
 
     # opens the file
-    reader = csv.reader(open("~/outputs" + file, "r"))
+    reader = csv.reader(open("~/outputs/" + file, "r"))
     data = []
     for line in reader:
         data.append(line)
