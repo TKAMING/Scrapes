@@ -132,8 +132,10 @@ def twitterScrape():
 
 
 def readScrapedData():
-    file = input("[*] What file you want to read? All files:\n " + os.listdir(path="./outputs") + "$ ")
-    print(os.listdir(path="./outputs"))
+    print("[*] What file you want to read? All files:")
+    opt_files = os.listdir(path="./outputs")
+    print(opt_files)
+    file = input(" $ ")
 
     # opens the file
     reader = csv.reader(open("~/outputs" + file, "r"))
