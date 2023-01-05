@@ -4,6 +4,7 @@ import os
 import sys
 import getpass
 import time
+import csv
 from Scweet.scweet import scrape
 from Scweet.user import get_user_information, get_users_following, get_users_followers
 
@@ -41,7 +42,7 @@ def twitterScrape():
 
     n = int(input(f"[*] How many kewords do you have?\n $ "))
     search = []
-    print(f"What keyword {name} to scrape through?")
+    print(f"\nWhat keyword {name} to scrape through?")
 
     for i in range(1, n+1):
         keyword = input(f"{i}. Keyword: ")
@@ -52,18 +53,10 @@ def twitterScrape():
     time.sleep(2)
     os.system("clear")
 
-    option = input("[~] Do you want to have a Interval [y/n]\n").lower()
-
-    if option == "y" or option == "yes":
-        print("[*] Example: yyyy-mm-dd")
-        since = input("Since: ")
-        until = input("Until: ")
-        interval = 1
-    # TODO Error not NONE must arg 1 must be str
-    else:
-        since = None
-        until = None
-        interval = None
+    print("[~] You know have to enter an Interval\n    Example: yyyy-mm-dd\n")
+    since = input("Since: ")
+    until = input("Until: ")
+    interval = 1
 
     time.sleep(1)
     os.system("clear")
@@ -95,7 +88,8 @@ def twitterScrape():
 [*] Example:
     en ---------- for English
     de ---------- for German
-    and so forth
+    fr ---------- for French
+    and so forth...
     \n{header}""").lower()
 
     time.sleep(1)
@@ -118,14 +112,11 @@ def twitterScrape():
         geocode = option
 
 
-    #scraping process
-    data = scrape(words=search, since=since, until=until, from_account=None, interval=interval,
-                  headless=False, display_type=display_type, save_images=False, lang=lang,
-                  resume=False, filter_replies=False, proximity=False, geocode=geocode)
+    # scraping process
 
-    data = scrape(hashtag="bitcoin", since="2021-08-05", until="2021-08-08", from_account=None, interval=interval,
-                  headless=True, display_type=display_type, save_images=True,
-                  resume=False, filter_replies=True, proximity=True)
+    data = scrape(words=search, since=since, until=until, from_account=None, interval=interval,
+                  headless=False, display_type=display_type, save_images=True, lang=lang,
+                  resume=False, filter_replies=False, proximity=False, geocode=geocode)
 
     # Get the main information of a given list of users
     users = users
@@ -138,3 +129,44 @@ def twitterScrape():
 
     following = get_users_following(users=users, env=env_path, verbose=0, headless=True, wait=2, limit=50, file_path=None)
     followers = get_users_followers(users=users, env=env_path, verbose=0, headless=True, wait=1, limit=50, file_path=None)
+
+
+def readScrapedData():
+    file = input("[*] What file you want to read? (All files in ~/Scrapes/scrapes/outputs/)\n $ ")
+    os.listdir(path="~/Scrapes/scrapes/outputs/")
+
+    # opens the file
+    reader = csv.reader(open("~/Scrapes/scrapes/outputs/" + file, "r"))
+    data = []
+    for line in reader:
+        data.append(line)
+
+    header = data.pop(0)
+
+    # prints the table of the .csv data
+    # print header table
+    print("#" * 220)
+    print(" # ", end="  ")
+    for column in header:
+        print(fixed_length(column,20), end= " # ")
+    print()
+    print("#" * 220)
+
+    # print main table
+    for line in data:
+        print(" # ", end="  ")
+        for column in line:
+            print(fixed_length(column,20), end= " # ")
+        print()
+    print("#" * 220)
+
+
+
+def fixed_length(text, length):
+    if len(text) > length:
+        text = text[:length]
+
+    elif len(text) < length:
+        text = (text + " " * length)[:length]
+    
+    return text

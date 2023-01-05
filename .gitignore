@@ -129,4 +129,5 @@ dmypy.json
 .pyre/
 
 chromedriver_mac64
-outputs
+outputs/
+images/

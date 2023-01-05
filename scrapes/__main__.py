@@ -6,7 +6,7 @@ import os
 import sys
 import getpass
 import readline
-from .twittermodule import twitterScrape
+from .twittermodule import twitterScrape, readScrapedData
 
 # banner for display
 banner = """
@@ -56,6 +56,7 @@ options_menu = """
             [update] ----------------- Update Scrape
             [uninstall] -------------- Unistalls Scrape
             [install] + [NAME] ------- Install something
+            [read data] -------------- Reads scraped data
             [clear] ------------------ Clears the screen
             [quit] ------------------- Quit
 
@@ -159,6 +160,9 @@ def cli():
 
         elif option == "twitter":
             twitterScrape()
+
+        elif option == "read data":
+            readScrapedData()
 
         # exception
         else:
