@@ -53,7 +53,7 @@ def twitterScrape():
     time.sleep(2)
     os.system("clear")
 
-    print("[~] You know have to enter an Interval\n    Example: yyyy-mm-dd\n")
+    print("[~] You need to enter an Interval\n    Example: yyyy-mm-dd\n")
     since = input("Since: ")
     until = input("Until: ")
     interval = 1
