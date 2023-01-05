@@ -9,80 +9,81 @@ from Scweet.scweet import scrape
 from Scweet.user import get_user_information, get_users_following, get_users_followers
 
 def twitterScrape():
-    username = getpass.getuser() # gets username
-    header = f"[~] {username}@scrapes $ " # sets up user input interface
-    name = "Twitter"
-    print("[+] Starting Twitter scraping process...\n")
+    try:
+        username = getpass.getuser() # gets username
+        header = f"[~] {username}@scrapes $ " # sets up user input interface
+        name = "Twitter"
+        print("[+] Starting Twitter scraping process...\n")
 
-    time.sleep(1)
+        time.sleep(1)
 
-    os.system("clear")
+        os.system("clear")
 
-    username = input(f"[*] Whats your {name} account username (Valid)?\n $ ")
+        username = input(f"[*] Whats your {name} account username (Valid)?\n $ ")
 
-    # password validation
-    
-    while True:
-        password = getpass.getpass(prompt = f"\n[*] Whats your {name} account password (Valid)?\n $ ")
-        password_check = getpass.getpass(prompt = f"\n[*] Enter your password again\n $ ")
+        # password validation
 
-        if password == password_check:
-            print("\n[+] Correct...\n")
-            break
+        while True:
+            password = getpass.getpass(prompt = f"\n[*] Whats your {name} account password (Valid)?\n $ ")
+            password_check = getpass.getpass(prompt = f"\n[*] Enter your password again\n $ ")
 
-        else:
-            print("The passwords are not the same. Try again...\n")
-            time.sleep(2)
-            os.system("clear")
-            continue
+            if password == password_check:
+                print("\n[+] Correct...\n")
+                break
 
-    email = input(f"\n[*] Whats your {name} account E-mail (Valid)?\n $ ")
+            else:
+                print("The passwords are not the same. Try again...\n")
+                time.sleep(2)
+                os.system("clear")
+                continue
 
-    os.system("clear")
+        email = input(f"\n[*] Whats your {name} account E-mail (Valid)?\n $ ")
 
-    n = int(input(f"[*] How many kewords do you have?\n $ "))
-    search = []
-    print(f"\nWhat keyword {name} to scrape through?")
+        os.system("clear")
 
-    for i in range(1, n+1):
-        keyword = input(f"{i}. Keyword: ")
-        search.append(keyword)
+        n = int(input(f"[*] How many kewords do you have?\n $ "))
+        search = []
+        print(f"\nWhat keyword {name} to scrape through?")
 
-    print(f"Scrape in {name} for: {search}\n")
+        for i in range(1, n+1):
+            keyword = input(f"{i}. Keyword: ")
+            search.append(keyword)
 
-    time.sleep(2)
-    os.system("clear")
+        print(f"Scrape in {name} for: {search}\n")
 
-    print("[~] You need to enter an Interval\n    Example: yyyy-mm-dd\n")
-    since = input("Since: ")
-    until = input("Until: ")
-    interval = 1
+        time.sleep(2)
+        os.system("clear")
 
-    time.sleep(1)
-    os.system("clear")
-    
-    option = input(f"""
+        print("[~] You need to enter an Interval\n    Example: yyyy-mm-dd\n")
+        since = input("Since: ")
+        until = input("Until: ")
+        interval = 1
+
+        time.sleep(1)
+        os.system("clear")
+
+        option = input(f"""
 [~] In which order to sort by the Tweets?
 
 [+] Options:
     1) Top --------- to display the most trending Tweets
     2) Latest ------ to display the latest posted Tweets
-    \n{header}""").lower()
+        \n{header}""").lower()
 
-    if option == "1" or option == "top":
-        display_type = "Top"
+        if option == "1" or option == "top":
+            display_type = "Top"
 
-    elif option == "2" or option == "latest":
-        display_type = "Latest"
+        elif option == "2" or option == "latest":
+            display_type = "Latest"
 
-    else:
-        print("[*] Incorrect answer! So Top sort has been choosen automaticly")
-        display_type = "Top"
+        else:
+            print("[*] Incorrect answer! So Top sort has been choosen automaticly")
+            display_type = "Top"
 
-    time.sleep(1)
-    os.system("clear")
+        time.sleep(1)
+        os.system("clear")
 
-    lang = input(f"""
+        lang = input(f"""
 [~] Which language you want to use?
 
 [*] Example:
@@ -90,12 +91,12 @@ def twitterScrape():
     de ---------- for German
     fr ---------- for French
     and so forth...
-    \n{header}""").lower()
+        \n{header}""").lower()
 
-    time.sleep(1)
-    os.system("clear")
+        time.sleep(1)
+        os.system("clear")
 
-    option = input(f"""
+        option = input(f"""
 [~] Do you want to use a geocode to scrape Tweets geolocated
     less than 200 km (depending on your input) 
     from your entered geolocation?
@@ -103,13 +104,17 @@ def twitterScrape():
 [*] Example:
     no --------------------------------- use no geolocation
     example: 38.3452,-0.481006,200km --- for less than 200km from Alicante (Spain) Lat=38.3452, Long=-0.481006
-    \n{header}""").lower()
+        \n{header}""").lower()
 
-    if option == "n" or option =="no":
-        geocode = None
+        if option == "n" or option =="no":
+            geocode = None
 
-    else:
-        geocode = option
+        else:
+            geocode = option
+
+    except:
+        print("[*] Error: Exiting...")
+        sys.exit()
 
 
     # scraping process
