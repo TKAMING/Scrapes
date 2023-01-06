@@ -6,6 +6,7 @@ import getpass
 import time
 import csv
 import dotenv
+from dotenv import load_dotenv
 from Scweet.scweet import scrape
 from Scweet.user import get_user_information, get_users_following, get_users_followers
 
@@ -143,7 +144,7 @@ def twitterUserInfo():
 
     env_path = ".env"
     dotenv_file = dotenv.find_dotenv()
-    dotenv.load_dotenv(dotenv_file)
+    load_dotenv(dotenv_path=env_path)
 
     # Write changes to .env file
     os.environ["SCWEET_EMAIL"] = email
@@ -160,6 +161,10 @@ def twitterUserInfo():
 
     following = get_users_following(users=users, env=env_path, verbose=0, headless=True, wait=2, limit=50, file_path=None)
     followers = get_users_followers(users=users, env=env_path, verbose=0, headless=True, wait=1, limit=50, file_path=None)
+
+    print(users_info)
+    print(following)
+    print(followers)
 
 
 def readScrapedData():
