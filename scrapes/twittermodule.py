@@ -5,6 +5,7 @@ import sys
 import getpass
 import time
 import csv
+import dotenv
 from Scweet.scweet import scrape
 from Scweet.user import get_user_information, get_users_following, get_users_followers
 
@@ -16,29 +17,6 @@ def twitterScrape():
         print("[+] Starting Twitter scraping process...\n")
 
         time.sleep(1)
-
-        os.system("clear")
-
-        username = input(f"[*] Whats your {name} account username (Valid)?\n $ ")
-
-        # password validation
-
-        while True:
-            password = getpass.getpass(prompt = f"\n[*] Whats your {name} account password (Valid)?\n $ ")
-            password_check = getpass.getpass(prompt = f"\n[*] Enter your password again\n $ ")
-
-            if password == password_check:
-                print("\n[+] Correct...\n")
-                break
-
-            else:
-                print("The passwords are not the same. Try again...\n")
-                time.sleep(2)
-                os.system("clear")
-                continue
-
-        email = input(f"\n[*] Whats your {name} account E-mail (Valid)?\n $ ")
-
         os.system("clear")
 
         n = int(input(f"[*] How many kewords do you have?\n $ "))
@@ -116,21 +94,69 @@ def twitterScrape():
         print("[*] Error: Exiting...")
         sys.exit()
 
-
     # scraping process
-
     data = scrape(words=search, since=since, until=until, from_account=None, interval=interval,
                   headless=False, display_type=display_type, save_images=True, lang=lang,
                   resume=False, filter_replies=False, proximity=False, geocode=geocode)
 
-    # Get the main information of a given list of users
-    users = users
+
+def twitterUserInfo():
+    name = "Twitter"
+    try:
+        username = input(f"[*] Whats your {name} account username (Valid)?\n $ ")
+
+        # password validation
+
+        while True:
+            password = getpass.getpass(prompt = f"\n[*] Whats your {name} account password (Valid)?\n $ ")
+            password_check = getpass.getpass(prompt = f"\n[*] Enter your password again\n $ ")
+
+            if password == password_check:
+                print("\n[+] Correct...\n")
+                break
+
+            else:
+                print("The passwords are not the same. Try again...\n")
+                time.sleep(2)
+                os.system("clear")
+                continue
+
+        email = input(f"\n[*] Whats your {name} account E-mail (Valid)?\n $ ")
+
+        # Get the main information of a given list of users
+        n = int(input(f"[*] How many users do you want to get the information from?\n $ "))
+        users = []
+        print("\nKnow enter the usernames")
+
+        for i in range(1, n+1):
+            usernames = input(f"{i}. Usernames: ")
+            users.append(usernames)
+
+        print(f"Search for this list of User {users}\n")
+
+        time.sleep(2)
+        os.system("clear")
+
+    except:
+        print("[*] Error: Exiting...")
+        sys.exit()
+
+    env_path = ".env"
+    dotenv_file = dotenv.find_dotenv()
+    dotenv.load_dotenv(dotenv_file)
+
+    # Write changes to .env file
+    os.environ["SCWEET_EMAIL"] = email
+    dotenv.set_key(dotenv_file, "SCWEET_EMAIL", os.environ["SCWEET_EMAIL"])
+    os.environ["SCWEET_PASSWORD"] = password
+    dotenv.set_key(dotenv_file, "SCWEET_PASSWORD", os.environ["SCWEET_PASSWORD"])
+    os.environ["SCWEET_USERNAME"] = username
+    dotenv.set_key(dotenv_file, "SCWEET_USERNAME", os.environ["SCWEET_USERNAME"])
 
     # this function return a list that contains : 
     # ["nb of following","nb of followers", "join date", "birthdate", "location", "website", "description"]
     users_info = get_user_information(users, headless=True)
 
-    env_path = ".env"
 
     following = get_users_following(users=users, env=env_path, verbose=0, headless=True, wait=2, limit=50, file_path=None)
     followers = get_users_followers(users=users, env=env_path, verbose=0, headless=True, wait=1, limit=50, file_path=None)

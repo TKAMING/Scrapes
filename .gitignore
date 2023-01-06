@@ -102,7 +102,6 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.env
 .venv
 env/
 venv/
@@ -129,5 +128,5 @@ dmypy.json
 .pyre/
 
 chromedriver_mac64
-outputs/
-images/
+outputs/*
+images/*

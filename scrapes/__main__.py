@@ -6,7 +6,7 @@ import os
 import sys
 import getpass
 import readline
-from .twittermodule import twitterScrape, readScrapedData
+from .twittermodule import twitterScrape, twitterUserInfo,readScrapedData
 
 # banner for display
 banner = """
@@ -48,7 +48,8 @@ help_menu = """
 # option menu
 options_menu = """
         [+] Command and Control:
-            [twitter] ---------------- To scrape Twitter
+            [twitter scrape] ---------------- To scrape Twitter
+            [twitter user info] ------------- To enter a list of User and get their information via Twitter
 
         [+] Options:
             [help] ------------------- Help Menu
@@ -158,8 +159,11 @@ def cli():
         elif option == "remove" or option == "uninstall":
             remove()
 
-        elif option == "twitter":
+        elif option == "twitter scrape":
             twitterScrape()
+
+        elif option == "twitter user info":
+            twitterUserInfo()
 
         elif option == "read data":
             readScrapedData()
