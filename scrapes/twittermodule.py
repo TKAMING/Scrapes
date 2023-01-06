@@ -124,7 +124,7 @@ def twitterUserInfo():
         email = input(f"\n[*] Whats your {name} account E-mail (Valid)?\n $ ")
 
         # Get the main information of a given list of users
-        n = int(input(f"[*] How many users do you want to get the information from?\n $ "))
+        n = int(input(f"\n[*] How many users do you want to get the information from?\n $ "))
         users = []
         print("\nKnow enter the usernames")
 
@@ -138,7 +138,7 @@ def twitterUserInfo():
         os.system("clear")
 
     except:
-        print("[*] Error: Exiting...")
+        print("\n[*] Error: Exiting...")
         sys.exit()
 
     env_path = ".env"
