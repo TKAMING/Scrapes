@@ -169,7 +169,7 @@ def twitterUserInfo():
 
 def readScrapedData():
     print("[*] What file you want to read? All files:")
-    opt_files = os.listdir(path="~/outputs")
+    opt_files = os.listdir(path="~/outputs/")
     print(opt_files)
     file = input(" $ ")
 
