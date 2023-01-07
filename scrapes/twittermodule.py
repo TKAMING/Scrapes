@@ -107,7 +107,6 @@ def twitterUserInfo():
         username = input(f"[*] Whats your {name} account username (Valid)?\n $ ")
 
         # password validation
-
         while True:
             password = getpass.getpass(prompt = f"\n[*] Whats your {name} account password (Valid)?\n $ ")
             password_check = getpass.getpass(prompt = f"\n[*] Enter your password again\n $ ")
