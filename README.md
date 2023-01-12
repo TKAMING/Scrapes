@@ -61,16 +61,15 @@ You must have **Google Chrome** installed on your system or the Twitter scrape f
 ---
 
 ## Technologies used
-Python(Selenium)
+Python
 
 ---
 
 ## Todo´s
 
 - [X] cli
-- [ ] Scraping
-  - [ ] Twitter
-  - [ ] Wiki
+- [X] Scraping
+  - [X] Twitter
 
 ---
   
